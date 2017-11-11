@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar color="primary">
+
+    <ion-title>
+      Assignment Manager
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="add()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <p style="color:#ccc;text-align:center" *ngIf="items.length==0">please input your assignment</p>
+  <ion-list>
+
+    <ion-item-sliding  *ngFor="let item of items;let i=index">
+      <button ion-item (click)="edit(i)">
+        <h2>{{item.className}}</h2>
+       
+        <ion-note item-right>{{item.doneDate}}</ion-note>
+        <p> {{item.complated ? "finished":"unfinished"}}</p>
+      </button>
+
+      <ion-item-options side="right">
+        <button ion-button  color="danger" (click)="delete(i)">Delete</button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+
+  </ion-list>
+</ion-content>
